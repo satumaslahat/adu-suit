@@ -76,6 +76,6 @@ games `(id, createdAt, status)` > rounds `(id, order, player, computer)`.
 5. isGameFinished: `yes` -> finishGame | `no` -> newRound
 
 ### Firebase API
-- Auth: login, getUser, subscribeAuth logout
+- Auth: login, getUser, subscribeAuth, logout
 - Game: addGame, updateGameStatus, queryWinningGames
 - Round: addRound, updateRoundAnswer, queryRoundScores
