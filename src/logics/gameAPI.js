@@ -1,0 +1,10 @@
+export const login = () => {};
+export const subscribeAuth = () => {};
+export const getUser = () => {};
+export const logout = () => {};
+export const addGame = () => {};
+export const updateGameStatus = () => {};
+export const queryWinningGames = () => {};
+export const addRound = () => {};
+export const updateRoundAnswer = () => {};
+export const queryRoundScores = () => {};
