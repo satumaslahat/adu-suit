@@ -48,6 +48,10 @@ Ini adalah repositori untuk final project.
   - views:
     - components:
       - (...)
+    - layouts:
+      - RoundStartedLayout.js
+      - PlayerAnswerLayout.js
+      - GameFinishedLayout.js
     - pages:
       - AuthPage.js
       - HomePage.js
