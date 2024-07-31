@@ -1,20 +1,23 @@
 import {
   getFirestore,
   addDoc,
-  collection,
-  serverTimestamp,
   updateDoc,
+  getCountFromServer,
+  serverTimestamp,
+  collection,
+  doc,
   query,
   where,
-  doc,
-  getCountFromServer,
+  and,
+  or,
 } from "firebase/firestore";
 import { firebaseApp } from "../utils/firebase";
 
 const db = getFirestore(firebaseApp);
-const gameCollection = collection(db, "games");
-const gameDocument = (docID) => doc(db, "games", docID);
-const roundCollection = collection(db, "rounds");
+const gameColl = collection(db, "games");
+const gameDoc = (gameID) => doc(gameColl, gameID);
+const roundColl = (gameID) => collection(gameDoc(gameID), "rounds");
+const roundDoc = (gameID, roundID) => doc(roundColl(gameID), roundID);
 
 export const login = () => {};
 export const subscribeAuth = () => {};
@@ -22,23 +25,69 @@ export const getUser = () => {};
 export const logout = () => {};
 export const addGame = async (userID) => {
   // check firebase console
-  await addDoc(gameCollection, {
+  await addDoc(gameColl, {
     userID: userID,
     createdAt: serverTimestamp(),
   });
 };
-export const updateGameStatus = async (docID, status) => {
+export const updateGameStatus = async (gameID, status) => {
   // check firebase console
-  await updateDoc(gameDocument(docID), {
+  await updateDoc(gameDoc(gameID), {
     status: status,
   });
 };
 export const queryWinningGames = async () => {
   // check vscode terminal
-  const queryDocs = query(gameCollection, where("status", "==", "win"));
+  const queryDocs = query(gameColl, where("status", "==", "win"));
   const result = await getCountFromServer(queryDocs);
   console.log(result.data().count);
 };
-export const addRound = () => {};
-export const updateRoundAnswer = () => {};
-export const queryRoundScores = () => {};
+export const addRound = async ({ gameID, round }) => {
+  // check firebase console
+  await addDoc(roundColl(gameID), {
+    createdAt: serverTimestamp(),
+    round: round,
+  });
+};
+export const updateRoundAnswer = async ({
+  gameID,
+  roundID,
+  player,
+  computer,
+}) => {
+  // check firebase console
+  await updateDoc(roundDoc(gameID, roundID), {
+    player: player,
+    computer: computer,
+  });
+};
+export const queryRoundScores = async (gameID) => {
+  // probably better to move this into cloud functions (onUpdateRoundAnswer)
+  // check vscode terminal
+  const queryScore = (player, computer) => {
+    return and(
+      where("player", "==", player),
+      where("computer", "==", computer)
+    );
+  };
+  const queryPlayer = query(
+    roundColl(gameID),
+    or(
+      queryScore("rock", "scissors"),
+      queryScore("paper", "rock"),
+      queryScore("scissors", "paper")
+    )
+  );
+  const queryComputer = query(
+    roundColl(gameID),
+    or(
+      queryScore("scissors", "rock"),
+      queryScore("rock", "paper"),
+      queryScore("paper", "scissors")
+    )
+  );
+  const playerResult = await getCountFromServer(queryPlayer);
+  const computerResult = await getCountFromServer(queryComputer);
+  console.log("player: ", playerResult.data().count);
+  console.log("computer: ", computerResult.data().count);
+};
