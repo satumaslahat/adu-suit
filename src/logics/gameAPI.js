@@ -30,8 +30,11 @@ const db = getFirestore(firebaseApp);
 const gameColl = collection(db, "games");
 const gameDoc = (gameID) => doc(gameColl, gameID);
 
-export const subscribeAuth = async (setUser) => {
-  return onAuthStateChanged(auth, (user) => setUser(user));
+export const subscribeAuth = async (setUser, setLoading) => {
+  return onAuthStateChanged(auth, (user) => {
+    setUser(user);
+    setLoading(false);
+  });
 };
 
 export const signup = async ({ name, email, password }) => {
