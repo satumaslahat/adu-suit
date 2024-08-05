@@ -1,3 +1,10 @@
+/**
+ * Codia React Native App
+ * https://codia.ai
+ * https://github.com/facebook/react-native
+ *
+ * @format
+ */
 import React from 'react';
 import {
     View,
@@ -291,3 +298,135 @@ export default function App(): React.JSX.Element {
                                 borderTopRightRadius: 10,
                                 borderBottomRightRadius: 10,
                                 borderBottomLeftRadius: 10,
+                                position: 'absolute',
+                                top: 0,
+                                left: 0,
+                                zIndex: 1,
+                            }}
+                        >
+                            <Text
+                                style={{
+                                    display: 'flex',
+                                    height: 17,
+                                    justifyContent: 'center',
+                                    alignItems: 'center',
+                                    fontFamily: 'Open Sans',
+                                    fontSize: 12,
+                                    fontWeight: '700',
+                                    lineHeight: 16.172,
+                                    color: '#ffffff',
+                                    position: 'absolute',
+                                    top: '50%',
+                                    left: 17,
+                                    right: 16,
+                                    textAlign: 'center',
+                                    zIndex: 2,
+                                    transform: [{ translateY: -8 }],
+                                }}
+                                numberOfLines={1}
+                            >
+                                Register
+                            </Text>
+                        </View>
+                    </View>
+                    <View
+                        style={{
+                            display: 'flex',
+                            width: 130,
+                            height: 5,
+                            flexDirection: 'row',
+                            justifyContent: 'space-between',
+                            alignItems: 'center',
+                            position: 'relative',
+                            zIndex: 18,
+                            marginTop: 15,
+                            marginRight: 0,
+                            marginBottom: 0,
+                            marginLeft: 115,
+                        }}
+                    >
+                        <View
+                            style={{
+                                width: 50,
+                                height: 5,
+                                flexShrink: 0,
+                                backgroundColor: '#cccccc',
+                                position: 'relative',
+                                zIndex: 18,
+                            }}
+                        />
+                        <View
+                            style={{
+                                width: 50,
+                                height: 5,
+                                flexShrink: 0,
+                                backgroundColor: '#056033',
+                                position: 'relative',
+                                zIndex: 16,
+                            }}
+                        />
+                    </View>
+                    <View
+                        style={{
+                            display: 'flex',
+                            width: 119,
+                            height: 16,
+                            flexDirection: 'row',
+                            justifyContent: 'space-between',
+                            alignItems: 'center',
+                            position: 'relative',
+                            zIndex: 17,
+                            marginTop: 0,
+                            marginRight: 0,
+                            marginBottom: 0,
+                            marginLeft: 124,
+                        }}
+                    >
+                        <Text
+                            style={{
+                                display: 'flex',
+                                width: 31,
+                                height: 16,
+                                justifyContent: 'center',
+                                alignItems: 'center',
+                                flexShrink: 0,
+                                fontFamily: 'Open Sans',
+                                fontSize: 12,
+                                fontWeight: '400',
+                                lineHeight: 16,
+                                color: '#cccccc',
+                                position: 'relative',
+                                textAlign: 'center',
+                                zIndex: 15,
+                            }}
+                            numberOfLines={1}
+                        >
+                            Login
+                        </Text>
+                        <Text
+                            style={{
+                                display: 'flex',
+                                width: 46,
+                                height: 16,
+                                justifyContent: 'center',
+                                alignItems: 'center',
+                                flexShrink: 0,
+                                fontFamily: 'Open Sans',
+                                fontSize: 12,
+                                fontWeight: '400',
+                                lineHeight: 16,
+                                color: '#056033',
+                                position: 'relative',
+                                textAlign: 'center',
+                                zIndex: 17,
+                            }}
+                            numberOfLines={1}
+                        >
+                            Register
+                        </Text>
+                    </View>
+                </View>
+            </ScrollView>
+        </SafeAreaView>
+    );
+}

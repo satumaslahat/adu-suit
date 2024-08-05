@@ -1,3 +1,10 @@
+/**
+ * Codia React Native App
+ * https://codia.ai
+ * https://github.com/facebook/react-native
+ *
+ * @format
+ */
 import React from 'react';
 import {
     View,
@@ -291,3 +298,76 @@ export default function App(): React.JSX.Element {
                         />
                         <View
                             style={{
+                                width: 50,
+                                height: 5,
+                                flexShrink: 0,
+                                backgroundColor: '#cccccc',
+                                position: 'relative',
+                                zIndex: 14,
+                            }}
+                        />
+                    </View>
+                    <View
+                        style={{
+                            display: 'flex',
+                            width: 119,
+                            height: 16,
+                            flexDirection: 'row',
+                            justifyContent: 'space-between',
+                            alignItems: 'center',
+                            position: 'relative',
+                            zIndex: 15,
+                            marginTop: 0,
+                            marginRight: 0,
+                            marginBottom: 0,
+                            marginLeft: 124,
+                        }}
+                    >
+                        <Text
+                            style={{
+                                display: 'flex',
+                                width: 31,
+                                height: 16,
+                                justifyContent: 'center',
+                                alignItems: 'center',
+                                flexShrink: 0,
+                                fontFamily: 'Open Sans',
+                                fontSize: 12,
+                                fontWeight: '400',
+                                lineHeight: 16,
+                                color: '#056033',
+                                position: 'relative',
+                                textAlign: 'center',
+                                zIndex: 13,
+                            }}
+                            numberOfLines={1}
+                        >
+                            Login
+                        </Text>
+                        <Text
+                            style={{
+                                display: 'flex',
+                                width: 46,
+                                height: 16,
+                                justifyContent: 'center',
+                                alignItems: 'center',
+                                flexShrink: 0,
+                                fontFamily: 'Open Sans',
+                                fontSize: 12,
+                                fontWeight: '400',
+                                lineHeight: 16,
+                                color: '#cccccc',
+                                position: 'relative',
+                                textAlign: 'center',
+                                zIndex: 15,
+                            }}
+                            numberOfLines={1}
+                        >
+                            Register
+                        </Text>
+                    </View>
+                </View>
+            </ScrollView>
+        </SafeAreaView>
+    );
+}
