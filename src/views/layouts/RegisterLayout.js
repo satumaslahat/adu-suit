@@ -1,10 +1,3 @@
-/**
- * Codia React Native App
- * https://codia.ai
- * https://github.com/facebook/react-native
- *
- * @format
- */
 import React from 'react';
 import {
     View,
@@ -13,9 +6,8 @@ import {
     SafeAreaView,
     ScrollView,
 } from 'react-native';
-import LinearGradient from 'react-native-linear-gradient';
 
-export default function App(): React.JSX.Element {
+export default function RegisterLayout() {
     return (
         <SafeAreaView>
             <ScrollView
@@ -46,7 +38,7 @@ export default function App(): React.JSX.Element {
                             marginBottom: 0,
                             marginLeft: 150,
                         }}
-                        source={require('./assets/images/de14853e-093b-4b3a-b990-b1794c993d3f.png')}
+                        source={require('../../../assets/logo-suit.png')}
                         resizeMode='cover'
                     />
                     <Text
