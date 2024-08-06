@@ -6,9 +6,8 @@ import {
   SafeAreaView,
   ScrollView,
 } from 'react-native';
-import LinearGradient from 'react-native-linear-gradient';
 
-export default function App() {
+export default function GamePagePlayerAnswerLayout() {
   return (
     <SafeAreaView>
       <ScrollView
@@ -39,7 +38,7 @@ export default function App() {
               marginBottom: 0,
               marginLeft: 150,
             }}
-            source={require('./assets/images/0940fb8a-06bc-4bab-bdff-1ddedd99345c.png')}
+            source={require('../../../assets/LogoAduSuit.png')}
             resizeMode='cover'
           />
           <View
@@ -122,7 +121,7 @@ export default function App() {
                 left: 0,
                 zIndex: 6,
               }}
-              source={require('./assets/images/6f66398c-4b3e-436a-b980-a06dceeecbe4.png')}
+              source={require('../../../assets/Batu.png')}
             />
             <ImageBackground
               style={{
@@ -133,7 +132,7 @@ export default function App() {
                 left: '34.66%',
                 zIndex: 1,
               }}
-              source={require('./assets/images/80c9ca04-9fa6-489b-867e-c1586656dfd0.png')}
+              source={require('../../../assets/Kertas.png')}
             />
             <ImageBackground
               style={{
@@ -144,7 +143,7 @@ export default function App() {
                 left: '69.33%',
                 zIndex: 3,
               }}
-              source={require('./assets/images/789673f9-fab2-4123-959a-023deb17ecfc.png')}
+              source={require('../../../assets/Gunting.png')}
             />
             <Text
               style={{

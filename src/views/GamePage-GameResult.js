@@ -6,9 +6,8 @@ import {
   SafeAreaView,
   ScrollView,
 } from 'react-native';
-import LinearGradient from 'react-native-linear-gradient';
 
-export default function App() {
+export default function GamePageGameResult() {
   return (
     <SafeAreaView>
       <ScrollView
@@ -49,7 +48,7 @@ export default function App() {
                 marginBottom: 0,
                 marginLeft: 133,
               }}
-              source={require('./assets/images/cdf5ae62-f539-4268-8e7c-de851f79e9aa.png')}
+              source={require('../../assets/LogoAduSuit.png')}
               resizeMode='cover'
             />
             <Text
@@ -323,17 +322,6 @@ export default function App() {
               YOU WIN!
             </Text>
           </View>
-          <ImageBackground
-            style={{
-              width: 144,
-              height: 144,
-              position: 'absolute',
-              top: 497.5,
-              left: -216.5,
-            }}
-            source={require('./assets/images/bf2d8c91-0abc-4a61-9b09-7d6724bac64f.png')}
-            resizeMode='cover'
-          />
         </View>
       </ScrollView>
     </SafeAreaView>
