@@ -36,8 +36,11 @@ const userColl = collection(db, "users");
 const gameDoc = (gameID) => doc(gameColl, gameID);
 const userDoc = (userID) => doc(userColl, userID);
 
-export const subscribeAuth = async (setUser) => {
-  return onAuthStateChanged(auth, (user) => setUser(user));
+export const subscribeAuth = async (setUser, setLoading) => {
+  return onAuthStateChanged(auth, (user) => {
+    setUser(user);
+    setLoading(false);
+  });
 };
 
 export const signup = async ({ name, email, password }) => {
