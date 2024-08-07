@@ -1,3 +1,4 @@
+import * as SplashScreen from "expo-splash-screen";
 import { useEffect, useState } from "react";
 import { Provider } from "react-redux";
 import { NavigationContainer } from "@react-navigation/native";
@@ -7,8 +8,12 @@ import { gameStore } from "./src/logics/gameRedux";
 import { HomePage } from "./src/views/pages/HomePage";
 import { AuthPage } from "./src/views/pages/AuthPage";
 import { GamePage } from "./src/views/pages/GamePage";
+import { useLoadFonts } from "./src/utils/useLoadFonts";
+
+SplashScreen.preventAutoHideAsync();
 
 export default function App() {
+  const { fontsLoaded, fontsError } = useLoadFonts();
   const [loading, setLoading] = useState(true);
   const [user, setUser] = useState(null);
   const Stack = createNativeStackNavigator();
@@ -16,6 +21,8 @@ export default function App() {
   useEffect(() => {
     subscribeAuth(setUser, setLoading);
   }, []);
+
+  if (!fontsLoaded && !fontsError) return;
 
   if (loading) return;
 

@@ -22,14 +22,6 @@ export default {
       bundleIdentifier: "com.satumaslahat.adusuit",
       supportsTablet: true,
     },
-    plugins: [
-      [
-        "expo-font",
-        {
-          fonts: ["node_modules/@expo-google-fonts/inter/Inter_900Black.ttf"],
-        },
-      ],
-    ],
     extra: {
       eas: {
         projectId: "03f38555-45bf-4c4b-91d0-9047e479e859",
