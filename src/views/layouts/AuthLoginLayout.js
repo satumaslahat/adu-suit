@@ -14,16 +14,14 @@ export default function AuthLoginLayout({
     <View style={styles.form}>
       <View>
         <Text style={styles.heading}>Welcome!</Text>
-        <Text style={styles.body}>
-          Please sign in to continue playing this game!
-        </Text>
+        <Text style={styles.body}>Please sign in to play the game!</Text>
       </View>
       <TextInput
         textColor={themes.colors.black}
         outlineColor={themes.colors.darkGreen}
         activeOutlineColor={themes.colors.darkGreen}
         mode="outlined"
-        autoCapitalize="none"
+        autoCapitalize="no ne"
         label="Email"
         value={email}
         onChangeText={(text) => setEmail(text)}
@@ -38,7 +36,13 @@ export default function AuthLoginLayout({
         value={password}
         onChangeText={(text) => setPassword(text)}
       />
-      <PrimaryButton title="Login" onPress={() => login({ email, password })} />
+      <PrimaryButton
+        title="Login"
+        onPress={async () => {
+          const error = await login({ email, password });
+          setError(error);
+        }}
+      />
     </View>
   );
 }

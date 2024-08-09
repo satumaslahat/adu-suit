@@ -6,11 +6,9 @@ export default function PrimaryButton({ title, onPress }) {
   return (
     <Button
       mode="contained"
-      labelStyle={{
-        fontFamily: "OpenSans_700Bold",
-        fontSize: themes.text.small,
-      }}
-      style={styles.button}
+      buttonColor={themes.colors.darkGreen}
+      labelStyle={styles.label}
+      style={{ borderRadius: 8 }}
       onPress={onPress}
     >
       {title}
@@ -19,9 +17,9 @@ export default function PrimaryButton({ title, onPress }) {
 }
 
 const styles = StyleSheet.create({
-  button: {
+  label: {
     color: themes.colors.white,
-    borderRadius: 8,
-    backgroundColor: themes.colors.darkGreen,
+    fontFamily: "OpenSans_700Bold",
+    fontSize: themes.text.small,
   },
 });

@@ -20,6 +20,7 @@ export default function UserHistory({ history }) {
 
 const styles = StyleSheet.create({
   card: {
+    backgroundColor: themes.colors.white,
     borderColor: themes.colors.darkGreen,
     borderWidth: 2,
     shadowColor: "transparent",

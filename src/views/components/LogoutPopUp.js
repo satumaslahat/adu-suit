@@ -39,6 +39,6 @@ const styles = StyleSheet.create({
     gap: 16,
   },
   image: { width: 100, height: 100 },
-  text: { fontFamily: "OpenSans_400Regular" },
+  text: { fontFamily: "OpenSans_400Regular", color: themes.colors.black },
   buttonGroup: { flexDirection: "row", gap: 16 },
 });
