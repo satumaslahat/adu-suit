@@ -1,54 +1,37 @@
-import {
-  addGame,
-  updateGameAnswer,
-  updateUserStats
-} from './gameAPI';
+import { addGame, updateGameAnswer } from "./gameAPI";
 
-const generateRandomChoice = () => {
-  const choices = ['rock', 'paper', 'scissors'];
-  const randomIndex = Math.floor(Math.random() * choices.length);
-  return choices[randomIndex];
+export const choices = ["rock", "paper", "scissors"];
+const winConditions = {
+  rock: "scissors",
+  paper: "rock",
+  scissors: "paper",
 };
 
-const checkTruth = async (gameID, playerChoice, computerChoice, userID) => {
-  const winConditions = {
-    rock: 'scissors',
-    paper: 'rock',
-    scissors: 'paper'
-  };
+export const startGame = async (userID) => {
+  const game = await addGame(userID);
+  return game.id;
+  // navigation.navigate("Game", { userID: userID, gameID: game.id });
+};
 
-  let result;
-  
-  if (playerChoice === computerChoice) {
-    result = 'draw';
-  } else if (winConditions[playerChoice] === computerChoice) {
-    result = 'win';
+export const checkTruth = async ({ gameID, playerAnswer }) => {
+  const randomIndex = Math.floor(Math.random() * choices.length);
+  const computerAnswer = choices[randomIndex];
+
+  let status;
+
+  if (playerAnswer === computerAnswer) {
+    status = "draw";
+  } else if (winConditions[playerAnswer] === computerAnswer) {
+    status = "win";
   } else {
-    result = 'lose';
+    status = "lose";
   }
 
-  // update game doc
-  await updateGameAnswer({ gameID, playerAnswer: playerChoice, computerAnswer: computerChoice });
-
-  // update user stats
-  await updateUserStats(userID, result);
-
-  return result;
-};
-
-// Main function
-export const startGame = async (playerChoice, userID) => {
-
-  const gameRef = await addGame(userID);
-  const gameID = gameRef.id;
-
-  const computerChoice = generateRandomChoice();
-
-  const result = await checkTruth(gameID, playerChoice, computerChoice, userID);
-
-  return {
+  await updateGameAnswer({
     gameID,
-    computerChoice,
-    result
-  };
+    playerAnswer: playerAnswer,
+    computerAnswer: computerAnswer,
+  });
+
+  return { status, playerAnswer, computerAnswer };
 };
