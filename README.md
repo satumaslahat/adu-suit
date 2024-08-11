@@ -1,4 +1,4 @@
-# proyek-gubrak
+# adu-suit
 Ini adalah repositori untuk final project.
 
 ### Installation
@@ -6,9 +6,9 @@ Ini adalah repositori untuk final project.
 2. Buka folder tersebut di vscode.
 3. Tekan `CMD + SHIFT + P (MacOS)` / `CTRL + SHIFT + P (Windows)`.
 4. Cari pilihan `Git Clone`.
-5. Paste `https://github.com/satumaslahat/proyek-gubrak.git`.
+5. Paste `https://github.com/satumaslahat/adu-suit.git`.
 6. Enter, install di folder terkait, tunggu hingga selesai.
-7. Buka proyek tersebut, pastikan root di vscode: `proyek-gubrak`.
+7. Buka proyek tersebut, pastikan root di vscode: `adu-suit`.
 
 ### Initialization
 1. Buat branch baru dengan `git checkout -b (namasatukata)` di terminal.
@@ -40,42 +40,33 @@ Ini adalah repositori untuk final project.
 6. Tekan create pull request.
 
 ### Project Structure
-- src:
-  - assets:
-    - (...)
-  - constants:
-    - messages.js
+- src:  
+  - logics:            
+    - gameAPI.js
+    - gameLoop.js
+    - gameSlice.js
   - views:
     - components:
       - (...)
-    - layouts:
-      - RoundStartedLayout.js
-      - PlayerAnswerLayout.js
-      - GameFinishedLayout.js
+    - layouts:    
+        - AuthLoginLayout.js
+        - AuthRegisterLayout.js
+        - GameAnswerLayout.js
+        - GameResultLayout.js
     - pages:
       - AuthPage.js
-      - HomePage.js
-      - GamePage.js
-   - logics:
-      - store:
-        - gameStates.js 
-        - gameActions.js
-        - gameReducers.js
-      - services:
-        - gameAPIs.js
-        - gameLoops.js
+      - GamePage.js   
+      - HomePage.js      
+  - utils:
+    - (...)
 
 ### Data Design
-games `(id, createdAt, status)` > rounds `(id, order, player, computer)`.
+games `(id, userID, createdAt, playerAnswer, computerAnswer)`.
 
 ### Game Loops
-1. startGame 
-2. newRound
-3. sendAnswer
-4. checkTruth: `draw` -> newRound | `win/lose` -> isGameFinished
-5. isGameFinished: `yes` -> finishGame | `no` -> newRound
+1. startGame
+2. checkTruth
 
 ### Firebase API
-- Auth: login, getUser, subscribeAuth, logout
-- Game: addGame, updateGameStatus, queryWinningGames
-- Round: addRound, updateRoundAnswer, queryRoundScores
+- Auth: signup, login, subscribeAuth, logout
+- Game: addGame, updateGameAnswer, getGameHistory
